@@ -45,6 +45,17 @@
     @apply relative rounded-2xl border border-white/10 bg-white/[0.04] backdrop-blur-xl;
   }
 
+  /* ── Dashboard-specific glass panels — slightly more opaque so the
+        frame background shows through subtly without hurting readability */
+  .dashboard-glass {
+    @apply relative rounded-2xl border border-white/[0.12]
+      bg-void/[0.55] backdrop-blur-2xl;
+    box-shadow: 0 4px 32px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.06);
+  }
+  .dashboard-glass:hover {
+    background-color: rgba(7,11,24,0.60);
+  }
+
   /* Legacy button classes — preserved for any remaining usages */
   .btn-primary {
     @apply inline-flex items-center justify-center gap-2 rounded-full bg-amber px-6 py-3

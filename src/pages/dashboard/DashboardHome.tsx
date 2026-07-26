@@ -62,7 +62,7 @@ interface StatCardProps {
 
 function StatCard({ label, value, icon: Icon, color, loading }: StatCardProps) {
   return (
-    <div className="glass-panel flex items-center gap-4 p-5 backdrop-blur-xl transition-shadow hover:shadow-[0_0_32px_rgba(77,163,255,0.08)]">
+    <div className="dashboard-glass flex items-center gap-4 p-5 transition-shadow hover:shadow-[0_0_40px_rgba(77,163,255,0.12)]">
       <div className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-xl ${color}`}>
         <Icon size={22} className="text-white" aria-hidden="true" />
       </div>
@@ -96,7 +96,7 @@ function EmptyCard({
   to: string;
 }) {
   return (
-    <div className="glass-panel flex flex-col items-center justify-center gap-3 p-8 text-center">
+    <div className="dashboard-glass flex flex-col items-center justify-center gap-3 p-8 text-center">
       <div className="flex h-12 w-12 items-center justify-center rounded-full bg-white/[0.06]">
         <Icon size={22} className="text-ink-faint" aria-hidden="true" />
       </div>
@@ -149,11 +149,6 @@ export default function DashboardHome() {
 
   return (
     <div className="relative space-y-8 pb-8">
-      {/* ── Ambient gradient blobs ─────────────────────────────────────────── */}
-      <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
-        <div className="absolute -top-24 -left-12 h-96 w-96 rounded-full bg-neon/[0.07] blur-[130px] animate-pulse-glow" />
-        <div className="absolute top-48 right-[-60px] h-80 w-80 rounded-full bg-violet/[0.07] blur-[110px] animate-pulse-glow [animation-delay:2.5s]" />
-      </div>
 
       {/* ── Welcome header ────────────────────────────────────────────────── */}
       <motion.div
@@ -233,7 +228,7 @@ export default function DashboardHome() {
           </div>
 
           {loading ? (
-            <div className="glass-panel space-y-3 p-4">
+            <div className="dashboard-glass space-y-3 p-4">
               {[1, 2, 3].map((i) => (
                 <div key={i} className="flex items-center gap-3 animate-pulse">
                   <div className="h-9 w-9 rounded-lg bg-white/10" />
@@ -253,7 +248,7 @@ export default function DashboardHome() {
               to="/dashboard/upload"
             />
           ) : (
-            <div className="glass-panel divide-y divide-white/5 overflow-hidden">
+            <div className="dashboard-glass divide-y divide-white/5 overflow-hidden">
               {recentDocs.map((doc) => (
                 <div
                   key={doc.id}
@@ -307,7 +302,7 @@ export default function DashboardHome() {
           </div>
 
           {loading ? (
-            <div className="glass-panel space-y-3 p-4">
+            <div className="dashboard-glass space-y-3 p-4">
               {[1, 2, 3].map((i) => (
                 <div key={i} className="flex items-center gap-3 animate-pulse">
                   <div className="h-9 w-9 rounded-lg bg-white/10" />
@@ -327,7 +322,7 @@ export default function DashboardHome() {
               to="/dashboard/chat"
             />
           ) : (
-            <div className="glass-panel divide-y divide-white/5 overflow-hidden">
+            <div className="dashboard-glass divide-y divide-white/5 overflow-hidden">
               {recentSessions.map((s) => (
                 <button
                   key={s.id}
@@ -360,7 +355,7 @@ export default function DashboardHome() {
       >
         <Link
           to="/dashboard/schemes"
-          className="glass-panel flex items-center gap-3 p-4 hover:bg-white/[0.06] transition-colors group"
+          className="dashboard-glass flex items-center gap-3 p-4 hover:bg-void/[0.65] transition-colors group"
         >
           <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-amber/15">
             <Landmark size={18} className="text-amber" />
@@ -374,7 +369,7 @@ export default function DashboardHome() {
 
         <button
           onClick={() => navigate("/dashboard/chat")}
-          className="glass-panel flex items-center gap-3 p-4 hover:bg-white/[0.06] transition-colors group text-left"
+          className="dashboard-glass flex items-center gap-3 p-4 hover:bg-void/[0.65] transition-colors group text-left"
         >
           <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-neon/15">
             <Plus size={18} className="text-neon" />
@@ -388,7 +383,7 @@ export default function DashboardHome() {
 
         <Link
           to="/dashboard/eligibility"
-          className="glass-panel flex items-center gap-3 p-4 hover:bg-white/[0.06] transition-colors group"
+          className="dashboard-glass flex items-center gap-3 p-4 hover:bg-void/[0.65] transition-colors group"
         >
           <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-violet/15">
             <CheckCircle2 size={18} className="text-violet-soft" />
